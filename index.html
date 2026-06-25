@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puerh Bar — Tea Menu</title>
+<meta name="description" content="Puerh Bar — a private tea collection, brewed gong fu style, for friends.">
+<style>
+  :root{
+    --cream:#FBF6EC; --ink:#2B2622; --accent:#7A3B1E;
+    --gold:#A9802B; --muted:#6E655B; --rule:#C9B79C;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .frame{
+    max-width:760px; margin:0 auto; padding:38px 30px 60px;
+  }
+  header{text-align:center; margin-bottom:6px;}
+  h1{
+    font-size:46px; letter-spacing:3px; color:var(--accent);
+    margin:0 0 2px; font-weight:700;
+  }
+  .tagline{font-style:italic; color:var(--muted); font-size:17px; margin:0;}
+  .toprule{border:0; border-top:2px solid var(--accent); margin:16px 0 26px;}
+
+  section{margin-bottom:30px;}
+  h2{
+    color:var(--accent); font-size:20px; letter-spacing:1.5px;
+    text-transform:uppercase; margin:0 0 4px; font-weight:700;
+  }
+  .sectrule{border:0; border-top:1.4px solid var(--gold); margin:0 0 12px;}
+
+  .item{
+    display:grid;
+    grid-template-columns:1fr 58px 64px;
+    column-gap:10px;
+    padding:7px 0;
+    border-bottom:1px dotted #E2D6C0;
+  }
+  .item:last-child{border-bottom:0;}
+  .name{font-weight:700; font-size:17px; grid-column:1; align-self:start;}
+  .note{
+    grid-column:1; font-style:italic; color:var(--muted);
+    font-size:13.5px; margin-top:2px; max-width:62ch;
+  }
+  .size{
+    grid-column:2; grid-row:1; text-align:right;
+    color:var(--gold); font-size:14px; white-space:nowrap; align-self:start;
+  }
+  .year{
+    grid-column:3; grid-row:1; text-align:right;
+    color:var(--muted); font-size:14px; white-space:nowrap; align-self:start;
+  }
+
+  footer{
+    margin-top:34px; padding-top:14px; border-top:2px solid var(--accent);
+    text-align:center;
+  }
+  .footnote{font-style:italic; color:var(--muted); font-size:14px; margin:0 0 14px;}
+  .map{
+    display:inline-flex; align-items:center; gap:8px;
+    text-decoration:none; color:var(--cream); background:var(--accent);
+    padding:10px 20px; border-radius:30px; font-size:15px;
+    letter-spacing:.3px; transition:background .15s ease;
+  }
+  .map:hover{background:#5e2d16;}
+  .map svg{width:17px; height:17px; fill:var(--cream);}
+
+  @media (max-width:560px){
+    .frame{padding:26px 18px 48px;}
+    h1{font-size:34px; letter-spacing:2px;}
+    .tagline{font-size:15px;}
+    .item{grid-template-columns:1fr 50px 56px; column-gap:8px;}
+    .name{font-size:15.5px;}
+    .note{font-size:12.5px;}
+    .size,.year{font-size:12.5px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .map{color:#000;background:none;border:1px solid var(--accent);}
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+  <header>
+    <h1>PUERH BAR</h1>
+    <p class="tagline">a private tea collection — brewed gong fu style, for friends</p>
+  </header>
+  <hr class="toprule">
+  <div id="menu"></div>
+
+  <footer>
+    <p class="footnote">Ask about today’s brews · most teas give many infusions · take your time</p>
+    <a class="map" href="https://maps.app.goo.gl/jh7R4gMJS3pRixov7" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+      Find us on the map
+    </a>
+  </footer>
+</div>
+
+<script>
+const MENU = [
+ ["Ripe (Shu) Pu-erh", [
+   ["Lucky Rabbit","100 g","2023","Gongting-grade blend of several vintages from Yule Shan; spicy-woody with a black-tea-like brightness."],
+   ["Tiger Cub","100 g","2022","Yule Shan ripe with lots of buds; smooth woody-spicy — nuts, chocolate, berry sourness, coffee-bitter finish."],
+   ["Mountain Peak","100 g","2022","Single high-mountain garden in Menghai (50–70-yr trees); confectionary-sweet with bitter chocolate."],
+   ["Bronze Tiger","357 g","2022","Bulang (Yong Ming) ripe, wine-fruity; figs, raisins and goji with chocolate and spice."],
+   ["Lincang","100 g","2021","Lincang ripe, 4 yrs aged in Guangzhou; lightly smoky-woody, balanced and sweet — chocolate, walnut, berries."],
+   ["Black Cat","100 g","2020","Ailao Mountain ripe; rich woody-chocolate and nut, powerful and velvety with pastry and spice."],
+   ["Menghai Wei Shu Cha","100 g","2019","Classic “pure Menghai taste” ripe; thick and enveloping, woody-nutty with roasted almond and a chocolatey bitterness."],
+   ["Lao Cha Tou — “Old Tea Heads”","loose","2018","Naturally clumped nuggets of Da Shu material; coffee-chocolate, smooth and sweet, excellent boiled."],
+   ["Yong Zhen Golden Dragon","357 g","2018","Semi-aged Yongde ripe (fermented 2018); ripe berries, fruity-woody with coffee-chocolate."],
+   ["Zhang Xiang Gu Shu","357 g","2015","Old-tree ripe with camphor (Zhang Xiang); velvety, nutty-woody, sparkling sweet finish."],
+   ["Lao Ban Zhang","357 g","2014","Premium aged Bulang; creamy with dark chocolate and spicy wood, long sweet aftertaste."],
+   ["Bulan Da Shu","357 g","2013","Semi-aged gongting-grade Bulang; rich and thick, woody-chocolate."],
+   ["Gu Shu Chen Yun","357 g","2009","Aged old-tree Bulang ripe; dark chocolate with cream, rich yet soft, long finish."],
+   ["Bulan Shan Qiao Mu","357 g","2006","Semi-aged Bulang arbor-tree ripe; smooth, woody and mellow."],
+   ["Chen Xian Gong Ting","loose","2005","Aged Menghai palace-grade buds; sweet, woody-nutty with camphor depth."],
+   ["Zhang Xiang — “Red Seal”","357 g","2005","Aged Fuhai cake, benchmark camphor (Zhang Xiang); sweet-woody and nutty, meditative."],
+   ["Chen Xiang — “Yellow Seal”","357 g","2003","Aged CNNP Menghai, Guangzhou-stored; leather, old wood, chocolate and a mentholated finish."],
+   ["Zhang Xiang Lao Cha","loose","1996","Very old, damp-stored ripe; deep, mellow aged wood and quiet sweetness."],
+ ]],
+ ["Hei Cha (Dark Tea)", [
+   ["Liu Bao Hei Cha","loose","2010","Guangxi basket-aged dark tea; woody-nutty with chocolate and spice, smooth and balanced."],
+   ["Liu Bao Hei Cha","loose","2006","Guangxi dark tea, classic old technology; woody-earthy, velvety, chestnut-ruby liquor."],
+ ]],
+ ["White Tea", [
+   ["Yue Guang Bai — “Moonlight White”","loose","2025","Yunnan large-leaf white (Jinggu Da Bai); dense sweet-floral aroma, fruity body, gentle tartness."],
+   ["Yue Guang Bai — “Moonlight White” (Yong Shun)","357 g","2017","Aged Banzhang arbor moonlight white pressed as a cake; mellow, honeyed and soft."],
+ ]],
+ ["Yellow Tea", [
+   ["Huo Shan Huang Ya","loose","2026","Anhui yellow tea, cloth-smothered; juicy, blackcurrant and floral with a long sweet finish."],
+ ]],
+ ["Green Tea", [
+   ["Tai Ping Hou Kui — “Monkey King”","loose","2026","Anhui green of long pressed leaves; honeyed orchid aroma, thick smooth broth, no astringency."],
+   ["Sencha “Sanchi Shikomi”","loose","2024","Fresh steamed Japanese green from Shizuoka; grassy, umami-rich and sweet."],
+   ["Cold-Brew Sencha (Mizudashi)","5 g","2024","Cold-steeped Shizuoka green in sachets; delicate, sweet, low bitterness."],
+ ]],
+ ["Oolong", [
+   ["Si Ji Chun — “Four Seasons Spring”","loose","2024","Taiwanese rolled oolong; sweet jasmine aroma, oily floral body, soft and calming."],
+   ["Ya Shi Xiang — “Duck Shit” Dan Cong","loose","2024","Phoenix Mountain oolong from old bushes; floral honey-fruit, creamy, long sweet finish."],
+   ["Milk Oolong — “Nai Xiang”","loose","2022","Creamy milk oolong (Mao Xie / Tieguanyin base); sweet milk-caramel, floral and creamy, no bitterness."],
+   ["GABA Wuliangshan","100 g","2020","Yunnan GABA oolong from 70-yr trees at 2000 m; honey-sweet, juicy berries and resin, deeply relaxing."],
+   ["GABA Ali Shan","loose","","High-mountain Taiwanese GABA oolong, medium roast; bready dried-fruit notes, relaxing and meditative."],
+ ]],
+ ["Black (Red) Tea", [
+   ["Da Jin Zhen Wang — “Golden Needles”","loose","2025","Yunnan golden-bud black (Jinggu Da Bai); berry and strawberry, juicy, sweet and velvety."],
+   ["Xiao Zhong High Grade","loose","2025","Wuyi Mountain black tea; caramel and baked fruit, sweet lingering finish."],
+   ["Gu Shu Shai Hong","100 g","2022","Old-tree sun-dried Yunnan red (Jinggu); honeyed, berry & dried-fruit, thick buckwheat-honey, juicy finish."],
+ ]],
+ ["Herbal & Other", [
+   ["Buckwheat — Soba Cha","loose","","Toasted buckwheat; nutty, comforting and naturally caffeine-free."],
+   ["Organic Cacao Tea","loose","Cyprus","100% cacao husk; rich chocolate aroma, sugar-free and caffeine-free."],
+   ["Yerba Mate — “Fresh Leafy 23”","loose","Brazil","Artisanal green mate (Meta Mate); grassy, vibrant and energizing."],
+   ["Yerba Mate — Canarias","loose","Brazil","Traditional Uruguayan-style ground mate; bold, smooth and full-bodied."],
+ ]],
+];
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const menuEl = document.getElementById("menu");
+for (const [title, items] of MENU){
+  const sec = document.createElement("section");
+  sec.innerHTML = `<h2>${esc(title)}</h2><hr class="sectrule">`;
+  for (const [name, size, year, note] of items){
+    const it = document.createElement("div");
+    it.className = "item";
+    it.innerHTML =
+      `<div class="name">${esc(name)}</div>`+
+      `<div class="size">${esc(size)}</div>`+
+      `<div class="year">${year ? esc(year) : ""}</div>`+
+      `<div class="note">${esc(note)}</div>`;
+    sec.appendChild(it);
+  }
+  menuEl.appendChild(sec);
+}
+</script>
+</body>
+</html>
